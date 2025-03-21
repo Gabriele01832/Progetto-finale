@@ -12,7 +12,7 @@
                     <p class="mt-2">{{ \Illuminate\Support\Str::limit($article->body, 150) }}</p>
                     <p class="mb-1"><strong>Categoria:</strong> {{ $article->category->name }}</p>
                     <p class="mb-2"><strong>Autore:</strong> {{ $article->user->name }}</p>
-                    <a href="#" class="btn btn-primary">Leggi di più</a>
+                    <a href="{{ route('articles.show', $article) }}" class="btn btn-primary">Leggi di più</a>
                 </div>
             </div>
         @empty

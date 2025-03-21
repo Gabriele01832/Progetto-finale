@@ -10,27 +10,18 @@ use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
-    /**
-     * Mostra tutti gli articoli
-     */
     public function index()
     {
         $articles = Article::orderBy('created_at', 'desc')->paginate(10);
         return view('articles.index', compact('articles'));
     }
 
-    /**
-     * Mostra il form di creazione articolo
-     */
     public function create()
     {
         $categories = Category::all();
         return view('articles.create', compact('categories'));
     }
 
-    /**
-     * Salva un nuovo articolo
-     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -50,5 +41,10 @@ class ArticleController extends Controller
         Article::create($validated);
 
         return redirect()->route('home')->with('success', 'Articolo pubblicato con successo!');
+    }
+
+    public function show(Article $article)
+    {
+        return view('articles.show', compact('article'));
     }
 }
