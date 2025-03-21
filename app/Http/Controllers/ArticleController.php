@@ -11,6 +11,15 @@ use Illuminate\Support\Facades\Storage;
 class ArticleController extends Controller
 {
     /**
+     * Mostra tutti gli articoli
+     */
+    public function index()
+    {
+        $articles = Article::orderBy('created_at', 'desc')->paginate(10);
+        return view('articles.index', compact('articles'));
+    }
+
+    /**
      * Mostra il form di creazione articolo
      */
     public function create()
