@@ -3,7 +3,8 @@
 @section('content')
     <h1>Nuovo Articolo</h1>
 
-    <form action="#" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('articles.store') }}" method="POST" enctype="multipart/form-data">
+
         @csrf
 
         <label>Titolo</label>

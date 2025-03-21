@@ -12,3 +12,7 @@ use App\Http\Controllers\ArticleController;
 Route::get('/articles/create', [ArticleController::class, 'create'])
     ->middleware(['auth'])
     ->name('articles.create');
+
+    Route::post('/articles/store', [ArticleController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('articles.store');
