@@ -11,11 +11,17 @@
 
         <p class="mb-4">{{ $article->body }}</p>
 
-        <p><strong>Categoria:</strong> {{ $article->category->name }}</p>
-        <p><strong>Autore:</strong>
+        <p>
+            <strong>Categoria:</strong>
+            <a href="{{ route('category.show', $article->category) }}">{{ $article->category->name }}</a>
+        </p>
+        <p>
+            <strong>Autore:</strong>
             <a href="{{ route('author.show', $article->user) }}">{{ $article->user->name }}</a>
         </p>
-        <p><strong>Pubblicato il:</strong> {{ $article->created_at->format('d/m/Y H:i') }}</p>
+        <p>
+            <strong>Pubblicato il:</strong> {{ $article->created_at->format('d/m/Y H:i') }}
+        </p>
 
         <a href="{{ route('articles.index') }}" class="btn btn-secondary mt-3">← Torna agli articoli</a>
     </div>

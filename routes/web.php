@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', [PublicController::class, 'home'])->name('home');
 
@@ -13,5 +14,8 @@ Route::get('/articles/create', [ArticleController::class, 'create'])->middleware
 Route::post('/articles/store', [ArticleController::class, 'store'])->middleware(['auth'])->name('articles.store');
 Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
 
-// Profili autore
+// Autore
 Route::get('/author/{user}', [UserController::class, 'show'])->name('author.show');
+
+// Categoria
+Route::get('/category/{category}', [CategoryController::class, 'show'])->name('category.show');

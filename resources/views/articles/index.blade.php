@@ -11,7 +11,8 @@
                     <h5 class="card-subtitle mb-2 text-muted">{{ $article->subtitle }}</h5>
                     <p class="mt-2">{{ \Illuminate\Support\Str::limit($article->body, 150) }}</p>
                     <p class="mb-1">
-                        <strong>Categoria:</strong> {{ $article->category->name }}
+                        <strong>Categoria:</strong>
+                        <a href="{{ route('category.show', $article->category) }}">{{ $article->category->name }}</a>
                     </p>
                     <p class="mb-2">
                         <strong>Autore:</strong>
