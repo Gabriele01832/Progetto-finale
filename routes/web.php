@@ -6,3 +6,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect('/index.html');
 });
+
+use App\Http\Controllers\ArticleController;
+
+Route::get('/articles/create', [ArticleController::class, 'create'])
+    ->middleware(['auth'])
+    ->name('articles.create');
