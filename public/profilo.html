@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profilo Utente</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .img-small {
+            width: 50%;
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar con il menu utente -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="home_logged.html">eCommerce</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="categorie.html">Categorie</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <span id="username">Utente</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="profilo.html">Profilo</a></li>
+                            <li><a class="dropdown-item" id="logoutBtn" href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenuto della Pagina Profilo -->
+    <div class="container mt-5">
+        <h2 class="text-center">Profilo Utente</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Dettagli Utente</h5>
+                        <table class="table">
+                            <tbody>
+                                <tr><td><strong>Nome:</strong></td> <td id="userNome">Mario Rossi</td></tr>
+                                <tr><td><strong>Email:</strong></td> <td id="userEmail">mario.rossi@example.com</td></tr>
+                                <tr><td><strong>Data di Nascita:</strong></td> <td id="userDataNascita">10/02/1985</td></tr>
+                                <tr><td><strong>Codice Fiscale:</strong></td> <td id="userCodiceFiscale">RSSMRA85B10H501Z</td></tr>
+                                <tr><td><strong>Indirizzo:</strong></td> <td id="userIndirizzo">Via Milano, 10, 20100 Milano</td></tr>
+                                <tr><td><strong>Telefono:</strong></td> <td id="userTelefono">+39 320 4567890</td></tr>
+                                <tr><td><strong>Stato Account:</strong></td> <td id="userStatoAccount">Attivo</td></tr>
+                            </tbody>
+                        </table>
+                        <a href="home_logged.html" class="btn btn-primary">Torna alla Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sezione Annunci -->
+        <div class="mt-5">
+            <h3 class="text-center">I tuoi Annunci</h3>
+            <div class="text-center mb-3">
+                <a href="crea_annuncio.html" class="btn btn-success">Crea Nuovo Annuncio</a>
+            </div>
+            <div id="annunci" class="row justify-content-center">
+                <!-- Gli annunci verranno generati qui -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const user = JSON.parse(localStorage.getItem("user"));
+            if (user) {
+                document.getElementById("username").textContent = user.nome || "Mario Rossi";
+            }
+
+            document.getElementById("logoutBtn").addEventListener("click", () => {
+                localStorage.removeItem("isLoggedIn");
+                window.location.href = "index.html";
+            });
+
+            // Annunci di esempio con immagini ridotte per i primi due
+            const annunci = [
+                {
+                    titolo: "iPhone 13 Pro",
+                    descrizione: "Vendo iPhone 13 Pro 128GB in ottime condizioni.",
+                    prezzo: "900€",
+                    immagine: "https://thumb.pccomponentes.com/w-530-530/articles/57/578999/1238-apple-iphone-13-mini-128gb-azul-libre-comprar.jpg",
+                    classe: "img-small"
+                },
+                {
+                    titolo: "Bicicletta da corsa",
+                    descrizione: "Bicicletta in fibra di carbonio, perfetta per le competizioni.",
+                    prezzo: "1.200€",
+                    immagine: "https://cdn.sanity.io/images/cwkbno5g/production/bcd2132f4fbdb79add30426953988c83ceeaa1cd-6252x4687.jpg?w=1600&quality=80&auto=format&fit=min",
+                    classe: "img-small"
+                },
+                {
+                    titolo: "Laptop Gaming MSI",
+                    descrizione: "Laptop con RTX 3070 e 16GB di RAM, perfetto per il gaming.",
+                    prezzo: "1.500€",
+                    immagine: "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/laptops/geforce-rtx-50-series-laptops-learn-og-1200x630-new.jpg",
+                    classe: ""
+                }
+            ];
+
+            const annunciContainer = document.getElementById("annunci");
+
+            annunci.forEach((annuncio, index) => {
+                const annuncioHTML = `
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <img src="${annuncio.immagine}" class="card-img-top ${annuncio.classe}" alt="${annuncio.titolo}">
+                            <div class="card-body">
+                                <h5 class="card-title">${annuncio.titolo}</h5>
+                                <p class="card-text">${annuncio.descrizione}</p>
+                                <p class="card-text"><strong>Prezzo:</strong> ${annuncio.prezzo}</p>
+                                <a href="modifica_annuncio.html" class="btn btn-warning btn-sm">Modifica</a>
+                                <a href="rimuovi_annuncio.html" class="btn btn-danger btn-sm">Rimuovi</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                annunciContainer.innerHTML += annuncioHTML;
+            });
+        });
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

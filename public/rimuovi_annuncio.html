@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rimuovi Annuncio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h2 class="text-center text-danger">Conferma Rimozione Annuncio</h2>
+        <div class="alert alert-warning text-center">
+            <p>Sei sicuro di voler eliminare questo annuncio? Questa operazione è irreversibile.</p>
+        </div>
+        <div class="text-center">
+            <button id="confirmDelete" class="btn btn-danger">Conferma Eliminazione</button>
+            <a href="profilo.html" class="btn btn-secondary">Annulla</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("confirmDelete").addEventListener("click", function() {
+            alert("Annuncio eliminato con successo!");
+            window.location.href = "profilo.html";
+        });
+    </script>
+
+</body>
+</html>
+

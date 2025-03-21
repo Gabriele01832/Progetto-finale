@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifica Annuncio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h2 class="text-center">Modifica Annuncio</h2>
+        <form id="editAdForm" class="mt-4">
+            <div class="mb-3">
+                <label for="title" class="form-label">Titolo Annuncio</label>
+                <input type="text" class="form-control" id="title" value="iPhone 13 Pro">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Descrizione</label>
+                <textarea class="form-control" id="description" rows="4">Vendo iPhone 13 Pro 128GB in ottime condizioni.</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Prezzo (€)</label>
+                <input type="number" class="form-control" id="price" value="900">
+            </div>
+            <div class="mb-3">
+                <label for="imageUrl" class="form-label">URL Immagine</label>
+                <input type="url" class="form-control" id="imageUrl" value="https://thumb.pccomponentes.com/w-530-530/articles/57/578999/1238-apple-iphone-13-mini-128gb-azul-libre-comprar.jpg">
+            </div>
+            <button type="submit" class="btn btn-warning">Salva Modifiche</button>
+            <a href="profilo.html" class="btn btn-secondary">Annulla</a>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("editAdForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Annuncio modificato con successo!");
+            window.location.href = "profilo.html";
+        });
+    </script>
+
+</body>
+</html>

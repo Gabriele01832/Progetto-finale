@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eCommerce - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Sfondo adattato completamente allo schermo */
+        body {
+            background: url('https://wallpapers.com/images/featured/4k-nature-ztbad1qj8vdjqe0p.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Contenitore per migliorare la leggibilità */
+        .content-container {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 50px;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        /* Navbar fissa */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Centrare il contenuto della pagina */
+        .container-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        /* Stile per gli annunci */
+        .annuncio {
+            background: white;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">eCommerce</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="categorie.html">Categorie</a></li>
+                    <li class="nav-item"><a class="nav-link" href="accedi.html">Accedi</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenuto della Home -->
+    <div class="container container-content">
+        <div class="content-container">
+            <h1><strong>Benvenuti su eCommerce.it</strong></h1>
+            <p class="welcome-text">Compra, vendi e scopri le migliori offerte online!</p>
+        </div>
+
+        <!-- Sezione Annunci -->
+        <div id="annunci" class="container mt-4"></div>
+    </div>
+
+    <!-- JavaScript per recuperare gli annunci da Laravel -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('http://127.0.0.1:8000/api/annunci')
+                .then(response => response.json())
+                .then(data => {
+                    let annunciContainer = document.getElementById("annunci");
+                    annunciContainer.innerHTML = "";  // Svuota il contenitore
+                    data.forEach(annuncio => {
+                        annunciContainer.innerHTML += `
+                            <div class="annuncio">
+                                <h5>${annuncio.titolo}</h5>
+                                <p>${annuncio.descrizione}</p>
+                                <p><strong>Prezzo:</strong> ${annuncio.prezzo}€</p>
+                            </div>
+                        `;
+                    });
+                })
+                .catch(error => console.error("Errore nel caricamento:", error));
+        });
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

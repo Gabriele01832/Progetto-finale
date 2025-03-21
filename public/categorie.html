@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorie - eCommerce</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script defer src="script.js"></script>
+
+    <style>
+        /* Sfondo azzurro chiaro */
+        body {
+            background-color: #cce7ff;
+            color: black;
+        }
+
+
+        /* Stile per le categorie */
+        .categoria-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+        }
+
+        /* Stile per i filtri */
+        .filter-container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">eCommerce</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="categorie.html">Categorie</a></li>
+                    <li class="nav-item" id="userMenu">
+                        <a class="nav-link" href="accedi.html">Accedi</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenuto -->
+    <div class="container mt-4">
+        <h2 class="text-center">Sfoglia le Categorie</h2>
+
+        <!-- Selezione categoria -->
+        <div class="row mt-3">
+            <div class="col-md-6 mx-auto">
+                <label for="categoriaSelect" class="form-label">Seleziona una categoria:</label>
+                <select id="categoriaSelect" class="form-select">
+                    <option value="">Tutte le categorie</option>
+                    <option value="elettronica">Elettronica</option>
+                    <option value="abbigliamento">Abbigliamento</option>
+                    <option value="casa">Casa & Giardino</option>
+                    <option value="motori">Motori</option>
+                    <option value="sport">Sport & Fitness</option>
+                    <option value="giochi">Giochi & Console</option>
+                    <option value="musica">Strumenti Musicali</option>
+                    <option value="arte">Arte & Collezionismo</option>
+                    <option value="libri">Libri & Riviste</option>
+                    <option value="animali">Animali & Accessori</option>
+                    <option value="alimentari">Cibo & Bevande</option>
+                    <option value="viaggi">Viaggi & Tempo Libero</option>
+                    <option value="lavoro">Lavoro & Servizi</option>
+                    <option value="immobili">Immobili & Affitti</option>
+                    <option value="informatica">Informatica & Software</option>
+                    <option value="fotografia">Fotografia</option>
+                    <option value="orologi">Orologi & Gioielli</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Filtri avanzati -->
+        <div class="row mt-4 filter-container">
+            <h5 class="mb-3">Filtra per:</h5>
+            
+            <div class="col-md-3">
+                <label for="prezzoMin">Prezzo Minimo:</label>
+                <input type="number" id="prezzoMin" class="form-control" placeholder="€ Min">
+            </div>
+            <div class="col-md-3">
+                <label for="prezzoMax">Prezzo Massimo:</label>
+                <input type="number" id="prezzoMax" class="form-control" placeholder="€ Max">
+            </div>
+            <div class="col-md-3">
+                <label for="condizione">Condizione:</label>
+                <select id="condizione" class="form-select">
+                    <option value="">Qualsiasi</option>
+                    <option value="nuovo">Nuovo</option>
+                    <option value="usato">Usato</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="posizione">Posizione:</label>
+                <input type="text" id="posizione" class="form-control" placeholder="Città o CAP">
+            </div>
+        </div>
+
+        <!-- Tipo di venditore -->
+        <div class="row mt-3 filter-container">
+            <div class="col-md-4">
+                <label for="venditore">Tipo di Venditore:</label>
+                <select id="venditore" class="form-select">
+                    <option value="">Qualsiasi</option>
+                    <option value="privato">Privato</option>
+                    <option value="azienda">Azienda</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="ordinaPer">Ordina per:</label>
+                <select id="ordinaPer" class="form-select">
+                    <option value="rilevanza">Rilevanza</option>
+                    <option value="prezzoCrescente">Prezzo: dal più basso</option>
+                    <option value="prezzoDecrescente">Prezzo: dal più alto</option>
+                    <option value="nuovi">Più recenti</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Categorie in Evidenza -->
+        <div class="row mt-5">
+            <h4 class="text-center mb-4">Categorie in Evidenza</h4>
+
+            <div class="col-md-3 text-center">
+                <div class="categoria-item">
+                    <h5>Elettronica</h5>
+                    <p>Trova smartphone, laptop e molto altro.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 text-center">
+                <div class="categoria-item">
+                    <h5>Abbigliamento</h5>
+                    <p>Moda per tutte le stagioni.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 text-center">
+                <div class="categoria-item">
+                    <h5>Casa & Giardino</h5>
+                    <p>Arredamento e decorazioni per la casa.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 text-center">
+                <div class="categoria-item">
+                    <h5>Motori</h5>
+                    <p>Auto, moto e accessori.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
