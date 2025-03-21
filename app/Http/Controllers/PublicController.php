@@ -15,3 +15,12 @@ class PublicController extends Controller
         return view('welcome');
     }
 }
+
+
+use App\Models\Article;
+
+public function home()
+{
+    $articles = Article::orderBy('created_at', 'desc')->take(5)->get();
+    return view('welcome', compact('articles'));
+}
